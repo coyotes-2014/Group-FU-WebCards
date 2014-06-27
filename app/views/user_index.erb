@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>Welcome <%= user.name %>!</h1>
+  <p>Let's get smart, shall we?</p>
+
+  <form action="/login" method="post"><center>
+    <input type="submit" value="Choose Ruby Terms"></center>
+  </form>
+  
+  <form action="/login" method="post"><center>
+    <input type="submit" value="World Capitals"></center>
+  </form>
+
+	<form action="/user/:id/deck/:deck_id" method="post">
+    <br>
+    <input type="text" name="guess" placeholder= "answer goes here">
+    <br>
+    <input type="submit" value="Go!">
+  </form>
+</div>
+
+
+<a href="/">Sign out</a>
