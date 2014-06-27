@@ -14,7 +14,7 @@ post '/user/:id/deck/:deck_id/done' do
   @user = current_user
   @deck = session[:deck]
   cards_left = @deck.cards.where(answered: false)
-  result = (@user_deck.cards.size - cards_left)/@user_deck.cards.size
+  @result = (@user_deck.cards.size - cards_left)/@user_deck.cards.size
   User_deck.update(@user_deck.id, user_result: result)
   Card.update_all(answered: false)
   erb :"/user/results"
