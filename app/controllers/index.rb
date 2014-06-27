@@ -1,7 +1,7 @@
 get '/' do
   if logged_in?
     @user = current_user
-    erb :'user/index'
+    erb :"/user/#{@user.id}/index"
   else
     erb :index
   end
@@ -16,12 +16,16 @@ post '/sign_up' do
     @user.save!
     session[:logged_in] = true
     session[:user_id] = @user.id
-    erb :"/user/#{@user.id}"
+    erb :"/user/index"
   end
 end
 
-post '/new_user' do
+get '/sign_up' do
   erb :'/new_user'
+end
+
+get '/login' do
+  erb :'/login'
 end
 
 post '/login' do
@@ -32,7 +36,7 @@ post '/login' do
       session[:user_id] = @user.id
       @decks = Deck.all
       @user_decks = Deck.where(user_id: @user.id)
-      erb :"/user/#{@user.id}"
+      erb :"/user/index"
     else
       redirect '/'
     end
