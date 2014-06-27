@@ -15,7 +15,7 @@ post '/user/:id/deck/:deck_id/done' do
   cards_left = @user_deck.where(cards.answered: false)
   result = (@user_deck.cards.size - cards_left)/@user_deck.cards.size
   User_deck.update(@user_deck.id, user_result: result)
-  erb :"/user/index"
+  erb :"/user/results"
 end
 
 post '/user/:id/deck/:deck_id/guess' do
@@ -29,12 +29,3 @@ post '/user/:id/deck/:deck_id/guess' do
     erb :"/user/show_card/incorrect"
   end
 end
-
-# post '/user/:id/deck/:deck_id/results' do
-#   @user = current_user
-#   @deck = User_deck.find_by(id: params[:deck_id])
-#   cards_left = @user_deck.where(cards.answered: false)
-#   result = (@user_deck.cards.size - cards_left)/@user_deck.cards.size
-#   User_deck.update(@user_deck.id, user_result: result)
-#   erb :"/user/#{@user.id}"
-# end
