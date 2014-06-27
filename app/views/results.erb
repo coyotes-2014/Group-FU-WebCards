@@ -1,7 +1,24 @@
 <div class="container">
   <h1><%= @user.name%> Results </h1>
-  <% @user_deck = UserDeck.find_by(user_id: @user.id) %>
-  <p>Let's look at how you did! <%= @user_deck.results %> </p>
+  <% @user_deck = UserDeck.find_by(id: session[:user_deck_id]) %>
+  <p>Let's look at how you did! <%= @user_deck.results %>% </p>
+
+  <br>
+
+  <h2>Game History</h2>
+
+  <p>Total Guesses = <%= @user_deck.total_guesses %> </p>
+  <br>
+  <p>Total Correct = <%= @user_deck.total_correct %> </p>
+  <br>
+  <p>Total Incorrect = <%= @user_deck.total_incorrect%> </p>
+
+  <h2>User History</h2>
+
+  <% @user_history = UserDeck.where(user_id: @user.id).order(:id) %>
+  <% @user_history.each do |deck| %>
+    <P> Deck = <%=deck.deck.name%>, Result = <%=deck.results%>% </p>
+  <%end%>
 
 
 <a href="/">Home</a>

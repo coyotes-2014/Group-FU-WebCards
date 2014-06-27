@@ -24,6 +24,10 @@ get '/sign_up' do
   erb :'/new_user'
 end
 
+get '/login' do
+  erb :'/login'
+end
+
 post '/login' do
   @user = User.find_by(email: params[:email])
   logger.info(@user)
@@ -42,7 +46,7 @@ post '/login' do
   end
 end
 
-post '/sign_out' do
+get '/sign_out' do
   session[:logged_in] = false
   session[:user_id] = 0
   redirect '/'
