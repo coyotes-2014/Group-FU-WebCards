@@ -1,7 +1,7 @@
 <div class="container">
   <h1><%= @user.name%> Results </h1>
-
-  <p>Let's look at how you did! <%= @user.user_result %> </p>
+  <% @user_deck = UserDeck.find_by(user_id: @user.id) %>
+  <p>Let's look at how you did! <%= @user_deck.results %> </p>
 
 
 <a href="/">Home</a>

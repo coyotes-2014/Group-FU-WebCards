@@ -3,7 +3,7 @@ class CreateUserDecks < ActiveRecord::Migration
   	create_table :user_decks do |t|
   		t.integer :user_id, null: false
   		t.integer :deck_id, null: false
-  		t.string :results, array: true, default: []
+  		t.decimal :results, default: 0
   		t.timestamps
   	end
   end

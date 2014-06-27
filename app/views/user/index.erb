@@ -1,15 +1,20 @@
 <div class="container">
-  <h1>Welcome <%= user.name %>!</h1>
+  <h1>Welcome <%= @user.name %>!</h1>
   <p>Let's get smart, shall we?</p>
 
-
-	<form action="/user/:id/deck/:deck_id" method="post">
+<% Deck.all.each do |deck| %>
+	<form action="/user/<%= @user.id %>/deck/<%= deck.id %>" method="post">
     <br>
-    <input type="text" name="guess" placeholder= "answer goes here">
-    <br>
-    <input type="submit" value="Go!">
+    <input type="submit" value="<%= deck.name %>">
   </form>
+<% end %>
+
+  <br>
+  <br>
+
+  <a href="/">Sign out</a>
+
 </div>
 
 
-<a href="/">Sign out</a>
+

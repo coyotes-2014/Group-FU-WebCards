@@ -3,7 +3,7 @@ class CreateCards < ActiveRecord::Migration
    	create_table :cards do |t|
   		t.text :definition, null: false
   		t.string :term, null: false
-  		t.string :deck_id, null: false
+  		t.integer :deck_id, null: false
   		t.string :answered, default: false
   		t.timestamps
   	end

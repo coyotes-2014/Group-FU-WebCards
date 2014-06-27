@@ -1,7 +1,7 @@
 get '/' do
   if logged_in?
     @user = current_user
-    erb :"/user/#{@user.id}/index"
+    erb :"/user/index"
   else
     erb :index
   end
@@ -24,12 +24,9 @@ get '/sign_up' do
   erb :'/new_user'
 end
 
-get '/login' do
-  erb :'/login'
-end
-
 post '/login' do
   @user = User.find_by(email: params[:email])
+  logger.info(@user)
   if @user != nil
     if @user.password == params[:password]
       session[:logged_in] = true
