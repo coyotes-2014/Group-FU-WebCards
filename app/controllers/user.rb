@@ -26,8 +26,16 @@ post '/user/:id/deck/:deck_id/guess' do
   @card = Card.find_by(id: params[:card_id])
   if params[:guess] == @card.definition
     Card.update(@card.id, answered: true)
+    cards = Card.where(deck_id: @deck.id, answered: false)
+    @card = cards.sample
     erb :"/user/deck/show_card"
   else
     erb :"/user/incorrect"
   end
+end
+
+post '/user/:id/deck/:deck_id/guess' do
+  cards = Card.where(deck_id: @deck.id, answered: false)
+  @card = cards.sample
+  erb :"/user/deck/show_card"
 end
