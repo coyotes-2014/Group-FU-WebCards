@@ -1,7 +1,7 @@
 get '/' do
   if logged_in?
     @user = current_user
-    erb :"/user/#{@user.id}/index"
+    erb :"/user/index"
   else
     erb :index
   end
@@ -30,6 +30,7 @@ end
 
 post '/login' do
   @user = User.find_by(email: params[:email])
+  logger.info(@user)
   if @user != nil
     if @user.password == params[:password]
       session[:logged_in] = true
@@ -45,7 +46,7 @@ post '/login' do
   end
 end
 
-post '/sign_out' do
+get '/sign_out' do
   session[:logged_in] = false
   session[:user_id] = 0
   redirect '/'

@@ -1,22 +1,23 @@
 <div class="container">
   <h1>FU Cards</h1>
-  <p>Term: <%= @card.term %></p>
+  <p>Definition: <%= @card.definition %></p>
 </div>
 <br>
 <br>
 
-<form action="/user/:id/deck/:deck_id/guess" method="get"><center>
-  <input type="hidden" name="card_id" value="<%=@card_id%>">
+<form action="/user/<%=@user.id%>/deck/<%=@card.deck.id%>/guess" method="post"><center>
+  <input type="hidden" name="card_id" value="<%=@card.id%>">
+  <input type="hidden" name="deck_id" value="<%=@card.deck.id%>">
   <input type="text" name="guess" placeholder="Type Your Guess Here">
-  <input type="submit" value="Quess!"></center>
+  <input type="submit" value="Guess!"></center>
 </form>
 
 
 <br>
 <br>
 
-<form action="/user/:id/deck/:deck_id/done" method="get"><center>
-  <input type="hidden" name="deck_id" value="<%=@deck_id%>">
+<form action="/user/<%=@user.id%>/deck/<%=@deck.id%>/done" method="post"><center>
+  <input type="hidden" name="deck_id" value="<%=@deck.id%>">
   <input type="hidden" name="user_deck_id" value="<%=@user_deck_id%>">
   <input type="submit" value="Quit"></center>
 </form>

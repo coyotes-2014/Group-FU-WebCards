@@ -5,12 +5,12 @@
   <form action="/login" method="post"><center>
     <input type="submit" value="Choose Ruby Terms"></center>
   </form>
-  
+
   <form action="/login" method="post"><center>
     <input type="submit" value="World Capitals"></center>
   </form>
 
-	<form action="/user/:id/deck/:deck_id" method="post">
+	<form action="/user/<%=@user.id%>/deck/<%=@deck.id%>" method="post">
     <br>
     <input type="text" name="guess" placeholder= "answer goes here">
     <br>
