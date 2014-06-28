@@ -1,6 +1,6 @@
-<div class="container">
-  <h1>Welcome <%= @user.name %>!</h1>
-  <p>Let's get smart, shall we?</p>
+
+  <h1><center>Welcome <%= @user.name %>!</center></h1>
+  <p>Let's get FU'd, shall we?</p>
 
 <% Deck.all.each do |deck| %>
 	<form action="/user/<%= @user.id %>/deck/<%= deck.id %>" method="post">
@@ -12,9 +12,11 @@
   <br>
   <br>
 
-  <a href="/sign_out">Sign out</a>
+  <form action="/sign_out" method="get"><center>
+  	<input type="submit" value="Iam Out!"></center>
+	</form>
 
-</div>
+
 
 
 

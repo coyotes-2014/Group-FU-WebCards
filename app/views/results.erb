@@ -1,8 +1,9 @@
-<div class="container">
+<center>
   <h1><%= @user.name%> Results </h1>
   <% @user_deck = UserDeck.find_by(id: session[:user_deck_id]) %>
-  <p>Let's look at how you did! <%= @user_deck.results %>% </p>
-
+  <p>Let's look at how you did...</p>
+  <p> <%= @user_deck.results %>% of the deck was completed!</p>
+</center>
   <br>
 
   <h2>Game History</h2>
@@ -20,6 +21,17 @@
     <P> Deck = <%=deck.deck.name%>, Result = <%=deck.results%>% </p>
   <%end%>
 
+<br>
+<br>
 
-<a href="/">Home</a>
+<form action="/" method="get"><center>
+  <input type="submit" value="Home"></center>
+</form>
+
+<br>
+<br>
+
+<form action="/sign_out" method="get"><center>
+  <input type="submit" value="Iam Out!"></center>
+</form>
 

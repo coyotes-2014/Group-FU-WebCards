@@ -7,3 +7,15 @@
 th {
   text-align: left;
 }
+
+li {
+	list-style-type: none;
+}
+
+body{
+	background-image: url("http://www.publicdomainpictures.net/pictures/30000/velka/nubes-grises.jpg");
+}
+
+h2{
+	color: #e6e6e6;
+}
