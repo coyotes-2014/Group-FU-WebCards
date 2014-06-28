@@ -1,9 +1,20 @@
 <center>
   <h1><%= @user.name%> Results </h1>
   <% @user_deck = UserDeck.find_by(id: session[:user_deck_id]) %>
+
+  <img src="http://media.tumblr.com/2a006cc321899bf82546cc6f86b1201a/tumblr_inline_n7p4rbkAND1qc1jgr.gif">
+
   <p>Let's look at how you did...</p>
-  <p> <%= @user_deck.results %>% of the deck was completed!</p>
-</center>
+  <p> <%= @user_deck.results.round(2) %>% of the deck was completed!</p>
+
+  <% if @user_deck.results < 30 %>
+    <p>That's pretty sad...<p>
+  <%elsif @user_deck.results > 90 %>
+    <p>You're a damn magician...<p>
+  <%else%>
+    <p>Not bad...<p>
+  <%end%>
+
   <br>
 
   <h2>Game History</h2>
@@ -18,7 +29,7 @@
 
   <% @user_history = UserDeck.where(user_id: @user.id).order(:id) %>
   <% @user_history.each do |deck| %>
-    <P> Deck = <%=deck.deck.name%>, Result = <%=deck.results%>% </p>
+    <p> <%=deck.deck.name%>, Played On <%=deck.created_at.strftime("%m/%d/%Y")%>, Deck Completion = <%=deck.results.round(2)%>% </p>
   <%end%>
 
 <br>
@@ -35,3 +46,4 @@
   <input type="submit" value="Iam Out!"></center>
 </form>
 
+</center>

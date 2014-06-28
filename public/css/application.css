@@ -14,6 +14,7 @@ li {
 
 body{
 	background-image: url("http://www.publicdomainpictures.net/pictures/30000/velka/nubes-grises.jpg");
+	background-size: cover;
 }
 
 h2{

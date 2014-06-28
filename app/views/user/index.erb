@@ -1,13 +1,14 @@
 
   <h1><center>Welcome <%= @user.name %>!</center></h1>
-  <p>Let's get FU'd, shall we?</p>
+<center>
+  <p>Which Deck Would You Like?</p>
 
-<% Deck.all.each do |deck| %>
-	<form action="/user/<%= @user.id %>/deck/<%= deck.id %>" method="post">
-    <br>
-    <input type="submit" value="<%= deck.name %>">
-  </form>
-<% end %>
+  <% Deck.all.each do |deck| %>
+	  <form action="/user/<%= @user.id %>/deck/<%= deck.id %>" method="post">
+      <br>
+      <input type="submit" value="<%= deck.name %>">
+    </form>
+  <% end %>
 
   <br>
   <br>
@@ -15,6 +16,18 @@
   <form action="/sign_out" method="get"><center>
   	<input type="submit" value="Iam Out!"></center>
 	</form>
+
+  <h1>Prior Results</h1>
+
+
+  <% @user_history = UserDeck.where(user_id: @user.id).order(:id) %>
+  <% @user_history.each do |deck| %>
+    <p> <%=deck.deck.name%>, Played On <%=deck.created_at.strftime("%m/%d/%Y")%>, Deck Completion = <%=deck.results.round(2)%>% </p>
+  <%end%>
+
+</center>
+
+
 
 
 
